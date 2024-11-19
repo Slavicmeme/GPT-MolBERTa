@@ -1,0 +1,11 @@
+name: molberta
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - backoff==2.2.1
+    - tokenizers==0.11.4
+    - transformers==4.28.0
+    - langchain
