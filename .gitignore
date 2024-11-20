@@ -2,4 +2,4 @@
 /bert/
 /data_gen/*
 !/data_gen/.gitignore
-
+/model_predict/
