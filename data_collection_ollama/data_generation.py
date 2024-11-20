@@ -16,7 +16,7 @@ if not os.path.exists(filename):
     os.makedirs(filename)
 
 # LLaMA/Ollama model initialization
-llm = OllamaLLM(model='gemma2:27b') # 모델 이름을 'gemma2:27b'로 지정
+llm = OllamaLLM(model='llama3.1:70b') # 모델 이름을 'gemma2:27b'로 지정
 
 prompt_template = PromptTemplate(
     input_variables=["smiles"],

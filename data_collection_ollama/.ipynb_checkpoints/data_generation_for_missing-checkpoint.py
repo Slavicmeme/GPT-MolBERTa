@@ -4,12 +4,13 @@ import os
 import glob2
 import numpy as np
 import yaml
-from langchain.llms import Ollama
+from langchain_ollama import OllamaLLM
 from langchain.prompts import PromptTemplate
 
-path = os.getcwd()  # '/home/suryabalaji/GPT_MolBERTa'
+path = os.getcwd()  # 현재 작업 디렉토리를 가져옵니다.
 
-with open(os.path.join(location, 'config_finetune.yaml'), 'r') as config_file:
+# YAML 설정 파일 로드
+with open(os.path.join(path, 'config_finetune.yaml'), 'r') as config_file:
     config = yaml.safe_load(config_file)
 
 filename = os.path.join(path, 'data_gen', 'text_files_' + config['dataframe'])
@@ -26,16 +27,17 @@ def done(path):
         new_list.append(mol_number)
     return new_list
 
-path_to_dataset = os.path.join(location, 'datasets')
-dataset_path = path_to_dataset + '/' + str(config['dataframe']) + '.csv'
+# 데이터셋 경로 설정
+path_to_dataset = os.path.join(path, 'datasets')
+dataset_path = os.path.join(path_to_dataset, str(config['dataframe']) + '.csv')
 length = len(pd.read_csv(dataset_path)['smiles'])
 
 array = np.arange(1, length + 1).tolist()
 done_p = done(p)
 left_over = [i for i in array if i not in done_p]
 
-# LLaMA/Ollama model initialization
-llm = Ollama(model_name='gemma2:27b')  # 'llama-model'은 실제 모델 이름으로 바꾸어야 합니다.
+# LLaMA/Ollama 모델 초기화
+llm = OllamaLLM(model='llama3.1:70b')  # 'llama-model'은 실제 모델 이름으로 바꾸어야 합니다.
 
 prompt_template = PromptTemplate(
     input_variables=["smiles"],
@@ -44,14 +46,14 @@ prompt_template = PromptTemplate(
 
 def generate_completion(name, value):
     prompt = prompt_template.format(smiles=value)
-    response = llm(prompt)
+    response = llm.invoke(prompt)
     with open(filename + "/" + str(name) + '.txt', 'w') as f:
         f.write(str(response))
 
 def data_gen(left_over):
-    df = pd.read_csv(path_to_dataset)
+    df = pd.read_csv(dataset_path)  # 수정된 부분
     x_data = df['smiles']
-    mapping = {}    
+    mapping = {}
     for idx in left_over:
         number = 'Molecule' + ' ' + str(idx)
         smiles = x_data[idx - 1]

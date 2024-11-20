@@ -1,0 +1,5 @@
+/roberta/
+/bert/
+/data_gen/*
+!/data_gen/.gitignore
+

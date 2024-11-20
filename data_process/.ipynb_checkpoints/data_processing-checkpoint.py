@@ -15,12 +15,16 @@ class Data_Processor:
     def __init__(self, dataset):
         self.dataset = dataset
     
-    def data_reader (self):
-        location = os.getcwd() # /home/suryabalaji/GPT_MolBERTa
+    def data_reader(self):
+        location = os.getcwd()  # /home/suryabalaji/GPT_MolBERTa
         path = os.path.join(location, 'data')
         fil = path + '/' + str(self.dataset) + '_dataset' + '.csv'
-        data = pd.read_csv(fil, sep = ',', encoding = 'utf-8')
-        data = data.drop('Unnamed: 0', axis = 1) 
+        data = pd.read_csv(fil, sep=',', encoding='utf-8')
+        
+        # 'Unnamed: 0' 열이 존재하는 경우에만 제거
+        if 'Unnamed: 0' in data.columns:
+            data = data.drop('Unnamed: 0', axis=1)
+        
         return data
 
     def canonical (self, dataframe): 
