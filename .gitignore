@@ -1,5 +1,6 @@
 /roberta/
 /bert/
 /data_gen/*
+/data/*
 !/data_gen/.gitignore
 *.bin
