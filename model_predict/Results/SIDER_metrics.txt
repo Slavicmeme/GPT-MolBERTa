@@ -1,0 +1,4 @@
+Dataset: SIDER
+F1-score (Micro): 0.7942 ± 0.0058
+F1-score (Macro): 0.6065 ± 0.0048
+AUC-ROC: 0.6178 ± 0.0088

@@ -1,0 +1,4 @@
+Dataset: ClinTox
+F1-score (Micro): 0.9776 ± 0.0090
+F1-score (Macro): 0.9118 ± 0.0306
+AUC-ROC: 0.9790 ± 0.0243

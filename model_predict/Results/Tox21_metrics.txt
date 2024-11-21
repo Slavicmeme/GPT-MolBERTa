@@ -1,0 +1,4 @@
+Dataset: Tox21
+F1-score (Micro): 0.1342 ± 0.0212
+F1-score (Macro): 0.1280 ± 0.0195
+AUC-ROC: 0.7503 ± 0.0085

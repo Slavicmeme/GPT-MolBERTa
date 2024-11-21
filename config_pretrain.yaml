@@ -2,7 +2,7 @@
 model: roberta # bert, roberta
 
 batch_size: 30
-epochs: 300
+epochs: 500
 
 model_bert:
   vocab_size: 50000

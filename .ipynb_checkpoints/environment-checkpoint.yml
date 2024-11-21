@@ -1,13 +1,22 @@
-name: molberta
+name: MolBERTa
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - python=3.10
+  - rdkit
+  - tqdm
+  - scikit-learn
+  - deepchem
   - pip
   - pip:
-    - backoff==2.2.1
-    - tokenizers
     - transformers==4.28.0
     - langchain
     - langchain_community
     - langchain-ollama
+    - tokenizers
+    - pandas
+    - numpy
+    - jupyterlab
+    - notebook
+    - backoff==2.2.1

@@ -1,0 +1,3 @@
+Dataset: Lipophilicity
+Average RMSE: 0.7820 ± 0.0067
+Average R²: 0.3885 ± 0.0105
