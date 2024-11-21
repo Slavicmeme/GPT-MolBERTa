@@ -4,3 +4,4 @@
 /data/*
 !/data_gen/.gitignore
 *.bin
+*.csv
